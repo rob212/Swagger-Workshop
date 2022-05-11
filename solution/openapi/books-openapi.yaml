@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  title: "Test Lab Bookstore"
+  description: "Test Lab Book Store API"
+  version: "1.0.0"
+  contact:
+    name: "Rob McBryde"
+    email: "robert.mcbryde@ros.gov.uk"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:4000"
+basePath: "/store/v1"
+schemes:
+- "http"
+# - "https"
+securityDefinitions:
+  basicAuth:
+    type: basic
+
+paths:
+  /books:
+    get:
+      summary: "returns all books"
+      description: "This operation returns a collection of all of the available books that exist on the server. This endpoint will return a json formatted list of the books."
+      operationId: "getBooks"
+      produces:
+        - "application/json"
+        # - "application/xml"
+      responses:
+        200:
+          description: "successful operation"
+          schema: 
+            # type: array
+            # items:
+            #   properties:
+            #     isbn:
+            #       type: "string"
+            #       description: "String representation of the books ISBN number"
+            #     title:
+            #       type: "string"
+            #       description: "The title of the book"
+            #     author: 
+            #       type: "string"
+            #       description: "The author(s) of the book"
+            #     id:
+            #       type: integer
+            #       description: "The id of the book"
+            $ref: "#/definitions/BookList" 
+        404:
+          description: "No books were found"
+          
+  /book/{bookId}:
+    get:
+      summary: "get specific book given ID"
+      operationId: "getBook"
+      produces:
+        - "application/json"
+      parameters:
+        - in: path
+          name: bookId
+          description: "the id of the book to retrieve"
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        404:
+          description: "no books found with given ID"
+        500:
+          description: "something went wrong - please speak to system administrator"
+          
+  /book:
+    post:
+      summary: "create a new book on server"
+      security:
+        - basicAuth: []
+      operationId: "createBook"
+      produces:
+        - "text/plain"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: body
+          name: "body"
+          description: "the new book details in JSON format"
+          required: true
+          schema:
+            $ref: "#/definitions/Book"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            type: integer
+        405:
+          description: "Invalid input"
+      
+        
+definitions:
+  Book:
+    type: object
+    properties:
+      isbn:
+        type: "string"
+        description: "String representation of the books ISBN number"
+        example: "1234567890"
+      title:
+        type: "string"
+        description: "The title of the book"
+        example: "My first book"
+      author: 
+        type: "string"
+        description: "The author(s) of the book"
+        example: "Writey McWriteface"
+      id:
+        type: integer
+        description: "The id of the book"
+        example: "1"
+        
+  BookList:
+    type: array
+    items:
+        $ref: '#/definitions/Book'

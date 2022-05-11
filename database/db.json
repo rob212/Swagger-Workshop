@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "isbn": "9780321534460",
+      "title": "Agile Testing: A Practical Guide for Testers and Agile Teams",
+      "author": "Lisa Crispin",
+      "id": 1
+    },
+    {
+      "isbn": "0321803027",
+      "title": "How Google Tests Software",
+      "author": "James A. Whittaker",
+      "id": 2
+    },
+    {
+      "isbn": "1937785025",
+      "title": "Explore It!: Reduce Risk and Increase Confidence with Exploratory Testing",
+      "author": "Elisabeth Hendrickson",
+      "id": 3
+    },
+    {
+      "isbn": "9780321601919",
+      "title": "Continuous Delivery",
+      "author": "Jez Humble",
+      "id": 4
+    },
+    {
+      "isbn": "9780321601919",
+      "title": "Continuous Delivery",
+      "author": "David Farley",
+      "id": 4
+    },
+    {
+      "isbn": "1847941109",
+      "title": "Scrum: The Art of Doing Twice the Work in Half the Time",
+      "author": "Jeff Sutherland",
+      "id": null
+    },
+    {
+      "isbn": "9780132350884",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "id": 8
+    },
+    {
+      "isbn": "0241237211",
+      "title": "The agency",
+      "author": "William McWriteface",
+      "id": 8
+    }
+  ]
+}
